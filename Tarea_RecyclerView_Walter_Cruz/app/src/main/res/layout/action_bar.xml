@@ -7,19 +7,10 @@
     android:layout_height="?attr/actionBarSize"
     android:background="?attr/colorPrimary"
     android:minHeight="?attr/actionBarSize"
-    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     tools:layout_editor_absoluteX="1dp"
     tools:layout_editor_absoluteY="429dp"
     android:elevation="@dimen/elevacion_action_bar">
-
-    <ImageButton
-        android:id="@+id/btnLike"
-        android:layout_width="@dimen/tamano_cv_icon"
-        android:layout_height="@dimen/tamano_cv_icon"
-        android:background="@drawable/estrella"
-        android:layout_marginLeft="250dp"
-        android:theme="@style/RaisedBtn"
-        android:onClick="mostrarMascotasSeguidas"/>
 
 </androidx.appcompat.widget.Toolbar>

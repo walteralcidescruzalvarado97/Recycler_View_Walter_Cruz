@@ -9,6 +9,9 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
+import forithn.com.tarea_recyclerview_walter_cruz.adaptadores.Adaptador;
+import forithn.com.tarea_recyclerview_walter_cruz.pojo.Perro;
+
 public class DetalleMascota extends AppCompatActivity {
 
     ArrayList<Perro> perros;
@@ -19,7 +22,7 @@ public class DetalleMascota extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mascota_detalle);
 
-        Toolbar actionBar = (Toolbar) findViewById(R.id.actionBar);
+        Toolbar actionBar = (Toolbar) findViewById(R.id.toolBar);
         setSupportActionBar(actionBar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -37,7 +40,7 @@ public class DetalleMascota extends AppCompatActivity {
     public void iniciarPerros(){
         perros = new ArrayList< Perro >();
 
-        perros.add(new Perro(R.drawable.perrro_uno, "Apolo", "5"));
+        perros.add(new Perro(R.drawable.perro_nueve, "Apolo", "5"));
         perros.add(new Perro(R.drawable.perro_ocho, "Zeus", "5"));
         perros.add(new Perro(R.drawable.perro_dos, "Dido", "4"));
         perros.add(new Perro(R.drawable.perro_seis, "Scott", "3"));

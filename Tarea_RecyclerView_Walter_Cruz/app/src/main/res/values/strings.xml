@@ -3,4 +3,18 @@
 
     <string name="nombre">Apolo</string>
     <string name="cant_likes">5</string>
+
+    <string name="menu_contacto">Contacto</string>
+    <string name="menu_acerca_de">Acerca de</string>
+
+    <string name="placeholder_nombre">Nombre Completo</string>
+    <string name="placeholder_email">Email</string>
+    <string name="placeholder_comentario">Comentario del Correo</string>
+
+    <string name="btn_enviar_comentario">Enviar Comentario</string>
+
+    <string name="desarrollador">Desarrollador de la App</string>
+    <string name="nombre_desarrollador">Walter Cruz</string>
+    <string name="telefono_desarrollador">+ 504 9943-6804</string>
+    <string name="email_desarrollador">walteraca97@gmail.com</string>
 </resources>

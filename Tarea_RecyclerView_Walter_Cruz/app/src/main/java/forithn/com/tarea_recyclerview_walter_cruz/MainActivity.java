@@ -1,58 +1,101 @@
 package forithn.com.tarea_recyclerview_walter_cruz;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
+
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
+import forithn.com.tarea_recyclerview_walter_cruz.adaptadores.Adaptador;
+import forithn.com.tarea_recyclerview_walter_cruz.adaptadores.AdaptadorFragment;
+import forithn.com.tarea_recyclerview_walter_cruz.fragments.FragmentListaPerros;
+import forithn.com.tarea_recyclerview_walter_cruz.fragments.FragmentPerfilPerro;
+import forithn.com.tarea_recyclerview_walter_cruz.pojo.Perro;
+
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Perro> perros;
-    private RecyclerView rvPerro;
+    private Toolbar actionBar;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar actionBar = (Toolbar) findViewById(R.id.actionBar);
-        setSupportActionBar(actionBar);
+        actionBar = (Toolbar) findViewById(R.id.actionBar);
+        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
 
-        rvPerro = (RecyclerView) findViewById(R.id.rvPerro);
+        iniciarFragments();
 
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
 
-        rvPerro.setLayoutManager(llm);
-        iniciarPerros();
-        inicializarAdaptador();
+        if(actionBar != null){
+            setSupportActionBar(actionBar);
+        }
     }
 
-    public void iniciarPerros(){
-        perros = new ArrayList< Perro >();
+    //*******************************MENU DE OPCIONES**********************************
 
-        perros.add(new Perro(R.drawable.perrro_uno, "Apolo", "5"));
-        perros.add(new Perro(R.drawable.perro_dos, "Dido", "4"));
-        perros.add(new Perro(R.drawable.perro_tres, "Fido", "3"));
-        perros.add(new Perro(R.drawable.perro_cuatro, "Kaiser", "2"));
-        perros.add(new Perro(R.drawable.perro_cinco, "Polo", "1 "));
+    //Sobre escribimos el Metodo onCreateOptionsMenu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Inflamos el Menu con el Menu de Opciones que acabamos de crear
+        getMenuInflater().inflate(R.menu.menu_opciones, menu);
+
+        return true;
     }
 
-    public void inicializarAdaptador(){
-        Adaptador adaptador = new Adaptador(perros, this);
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch ( item.getItemId() ){
+            case R.id.mContacto:
+                Intent intent = new Intent(this, Contacto.class);
+                startActivity(intent);
+                break;
 
-        rvPerro.setAdapter(adaptador);
+            case R.id.mAcercaDe:
+                Intent intent_dos = new Intent(this, AcercaDe.class);
+                startActivity(intent_dos);
+                break;
+
+            case R.id.mEstrella:
+                Intent intent_tres = new Intent(this, DetalleMascota.class);
+                startActivity(intent_tres);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
-    public void  mostrarMascotasSeguidas(View v){
-        Intent intent = new Intent(this, DetalleMascota.class);
-        startActivity(intent);
+    private ArrayList<Fragment> agregarFragments(){
+        ArrayList< Fragment > fragments = new ArrayList<>();
+
+        //Se Cargan los Fragments
+        fragments.add(new FragmentListaPerros());
+        fragments.add(new FragmentPerfilPerro());
+
+        //Se Retornan los Fragments
+        return fragments;
+    }
+
+    private void iniciarFragments(){
+        viewPager.setAdapter(new AdaptadorFragment( getSupportFragmentManager(), agregarFragments() ));
+        tabLayout.setupWithViewPager( viewPager );
+
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_perros);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_perfil_perro);
     }
 
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/llPerfilPerro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/fondo_cv"
+        android:paddingTop="@dimen/padding"
+        android:paddingRight="@dimen/padding"
+        android:paddingBottom="@dimen/padding"
+        android:paddingLeft="@dimen/padding">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/imgCircularPerfil"
+            android:layout_width="@dimen/tamano_imagen_cv_dos"
+            android:layout_height="@dimen/tamano_imagen_cv_dos"
+            android:src="@drawable/perro_nueve"
+            app:civ_border_color="@color/colorPrimaryDark"
+            app:civ_border_width="4dp"
+            app:civ_shadow="true"
+            app:civ_shadow_radius="5dp"
+            app:civ_shadow_color="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/tvCVNombrePerroPerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nombre"
+            android:textStyle="bold"
+            android:textSize="@dimen/tamano_cv_dos"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPerroPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tvCVNombrePerroPerfil"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

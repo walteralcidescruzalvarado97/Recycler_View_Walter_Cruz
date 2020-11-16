@@ -4,27 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fondo_cv"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/actionBar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="429dp"
-        android:elevation="@dimen/elevacion_action_bar">
-
-    </androidx.appcompat.widget.Toolbar>
+    <include android:id="@+id/toolBar"
+        layout="@layout/action_bar"></include>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPerroSeguido"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/actionBar"/>
+        android:layout_below="@id/toolBar"/>
 
 </RelativeLayout>

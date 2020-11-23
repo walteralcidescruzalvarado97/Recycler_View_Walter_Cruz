@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import forithn.com.tarea_recyclerview_walter_cruz.db.ConstructorPerrosDB;
 import forithn.com.tarea_recyclerview_walter_cruz.pojo.Perro;
 import forithn.com.tarea_recyclerview_walter_cruz.R;
 
@@ -38,18 +39,25 @@ public class Adaptador extends RecyclerView.Adapter< Adaptador.PerroViewHolder >
 
     //Asocia cada elemento de la Nuestra lista con cada view
     @Override
-    public void onBindViewHolder(@NonNull PerroViewHolder perroViewHolder, int position) {
+    public void onBindViewHolder(@NonNull final PerroViewHolder perroViewHolder, int position) {
         final Perro perro = perros.get(position);
 
         perroViewHolder.imgPerro.setImageResource( perro.getFoto() );
         perroViewHolder.tvCVNombrePerro.setText( perro.getNombre() );
-        perroViewHolder.tvCVCantidadLikePerro.setText( perro.getCantLike() );
+        perroViewHolder.tvCVCantidadLikePerro.setText( String.valueOf( perro.getCantLike() ) );
 
         perroViewHolder.btnLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast para el Boton de Like
-                Toast.makeText(activity, "Se ha vuelto Seguidor de " + perro.getNombre() + "!", Toast.LENGTH_SHORT).show();
+            //Toast para el Boton de Like
+            Toast.makeText(activity, "Se ha vuelto Seguidor de " + perro.getNombre() + "!", Toast.LENGTH_SHORT).show();
+
+            ConstructorPerrosDB constructorPerrosDB = new ConstructorPerrosDB(activity);
+            constructorPerrosDB.insertarPerroDB( perro );
+
+            perroViewHolder.tvCVCantidadLikePerro.setText( String.valueOf( constructorPerrosDB.obtenerLikePerro( perro.getNombre() ) ) );
+
+            perroViewHolder.btnLike.setEnabled(false);
             }
         });
     }

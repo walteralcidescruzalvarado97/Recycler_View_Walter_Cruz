@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import forithn.com.tarea_recyclerview_walter_cruz.R;
 import forithn.com.tarea_recyclerview_walter_cruz.adaptadores.Adaptador;
+import forithn.com.tarea_recyclerview_walter_cruz.db.ConstructorPerrosDB;
 import forithn.com.tarea_recyclerview_walter_cruz.pojo.Perro;
 
 public class FragmentListaPerros extends Fragment {
@@ -44,11 +45,16 @@ public class FragmentListaPerros extends Fragment {
     public void iniciarPerros(){
         perros = new ArrayList< Perro >();
 
-        perros.add(new Perro(R.drawable.perro_nueve, "Apolo", "5"));
-        perros.add(new Perro(R.drawable.perro_dos, "Dido", "4"));
-        perros.add(new Perro(R.drawable.perro_tres, "Fido", "3"));
-        perros.add(new Perro(R.drawable.perro_cuatro, "Kaiser", "2"));
-        perros.add(new Perro(R.drawable.perro_cinco, "Polo", "1 "));
+        ConstructorPerrosDB constructorPerrosDB = new ConstructorPerrosDB( getContext() );
+
+        perros.add(new Perro(R.drawable.perro_nueve, "Apolo", constructorPerrosDB.obtenerLikePerro( "Apolo" ) ));
+        perros.add(new Perro(R.drawable.perro_cuatro, "Kaiser", constructorPerrosDB.obtenerLikePerro( "Kaiser" ) ));
+        perros.add(new Perro(R.drawable.perro_ocho, "Zeus", constructorPerrosDB.obtenerLikePerro( "Zeus" ) ));
+        perros.add(new Perro(R.drawable.perro_cinco, "Polo", constructorPerrosDB.obtenerLikePerro( "Polo" ) ));
+        perros.add(new Perro(R.drawable.perro_dos, "Dido", constructorPerrosDB.obtenerLikePerro( "Dido" ) ));
+        perros.add(new Perro(R.drawable.perro_tres, "Fido", constructorPerrosDB.obtenerLikePerro( "Fido" ) ));
+        perros.add(new Perro(R.drawable.perro_seis, "Rocky", constructorPerrosDB.obtenerLikePerro( "Rocky" ) ));
+        perros.add(new Perro(R.drawable.perro_siete, "Pelusa", constructorPerrosDB.obtenerLikePerro( "Pelusa" ) ));
     }
 
     public void inicializarAdaptador(){

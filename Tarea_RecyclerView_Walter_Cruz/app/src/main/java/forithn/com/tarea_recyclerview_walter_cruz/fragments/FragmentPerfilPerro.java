@@ -36,7 +36,7 @@ public class FragmentPerfilPerro extends Fragment {
 
         rvPerroPerfil.setLayoutManager(glm);
         iniciarPerros();
-        inicializarAdaptador();
+        inicializarAdaptadorPerfilPerro();
 
         return v;
     }
@@ -44,13 +44,13 @@ public class FragmentPerfilPerro extends Fragment {
     public void iniciarPerros(){
         perros = new ArrayList< Perro >();
 
-        perros.add(new Perro(R.drawable.perro_nueve, "Dido", "5"));
-        perros.add(new Perro(R.drawable.perrro_uno, "Apolo", "5"));
-        perros.add(new Perro(R.drawable.perro_diez, "Fido", "4"));
-        perros.add(new Perro(R.drawable.perro_once, "Kaiser", "3"));
+        perros.add(new Perro(R.drawable.perro_nueve, "Dido", 5));
+        perros.add(new Perro(R.drawable.perrro_uno, "Apolo", 5));
+        perros.add(new Perro(R.drawable.perro_diez, "Fido", 4));
+        perros.add(new Perro(R.drawable.perro_once, "Kaiser", 3));
     }
 
-    public void inicializarAdaptador(){
+    public void inicializarAdaptadorPerfilPerro(){
         PerfilPerroAdaptador adaptador = new PerfilPerroAdaptador( perros, getActivity() );
 
         rvPerroPerfil.setAdapter(adaptador);

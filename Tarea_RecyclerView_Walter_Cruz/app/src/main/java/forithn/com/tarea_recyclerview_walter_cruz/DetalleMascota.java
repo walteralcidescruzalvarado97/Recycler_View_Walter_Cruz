@@ -11,11 +11,15 @@ import java.util.ArrayList;
 
 import forithn.com.tarea_recyclerview_walter_cruz.adaptadores.Adaptador;
 import forithn.com.tarea_recyclerview_walter_cruz.pojo.Perro;
+import forithn.com.tarea_recyclerview_walter_cruz.presentador.DetalleMascota_Presentador;
+import forithn.com.tarea_recyclerview_walter_cruz.presentador.IDetalleMascota_Presentador;
 
-public class DetalleMascota extends AppCompatActivity {
+public class DetalleMascota extends AppCompatActivity implements IDetalleMascota {
 
     ArrayList<Perro> perros;
     private RecyclerView rvPerroSeguido;
+
+    private IDetalleMascota_Presentador iDetalleMascota_presentador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,28 +33,27 @@ public class DetalleMascota extends AppCompatActivity {
 
         rvPerroSeguido = (RecyclerView) findViewById(R.id.rvPerroSeguido);
 
+
+        iDetalleMascota_presentador = new DetalleMascota_Presentador(this, this );
+    }
+
+    @Override
+    public void generarLinearLayoutVertical() {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
 
         rvPerroSeguido.setLayoutManager(llm);
-        iniciarPerros();
-        inicializarAdaptador();
     }
 
-    public void iniciarPerros(){
-        perros = new ArrayList< Perro >();
-
-        perros.add(new Perro(R.drawable.perro_nueve, "Apolo", "5"));
-        perros.add(new Perro(R.drawable.perro_ocho, "Zeus", "5"));
-        perros.add(new Perro(R.drawable.perro_dos, "Dido", "4"));
-        perros.add(new Perro(R.drawable.perro_seis, "Scott", "3"));
-        perros.add(new Perro(R.drawable.perro_siete, "Pelusa", "2"));
-
-    }
-
-    public void inicializarAdaptador(){
+    @Override
+    public Adaptador crearAdaptador(ArrayList<Perro> perros) {
         Adaptador adaptador = new Adaptador(perros, this);
 
+        return adaptador;
+    }
+
+    @Override
+    public void inicializarAdaptador(Adaptador adaptador) {
         rvPerroSeguido.setAdapter(adaptador);
     }
 }

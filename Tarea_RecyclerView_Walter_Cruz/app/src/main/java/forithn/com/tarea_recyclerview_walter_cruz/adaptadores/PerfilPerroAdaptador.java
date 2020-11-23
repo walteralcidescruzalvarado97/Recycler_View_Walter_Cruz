@@ -44,7 +44,7 @@ public class PerfilPerroAdaptador extends RecyclerView.Adapter< PerfilPerroAdapt
         final Perro perro = perros.get(position);
 
         perroViewHolder.imgPerroDos.setImageResource( perro.getFoto() );
-        perroViewHolder.tvCVDosCantidadLikePerro.setText( perro.getCantLike() );
+        perroViewHolder.tvCVDosCantidadLikePerro.setText( String.valueOf( perro.getCantLike() ) );
     }
 
     //Cantidad de Elementos que contiene la Lista de Perros
